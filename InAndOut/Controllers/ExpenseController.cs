@@ -38,15 +38,15 @@ namespace InAndOut.Controllers
             }
             return View(obj);
         }
-        public IActionResult Update()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Update(int? id)
         {
             var obj = _db.Expenses.Find(id);
+            return View(obj);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(Expense obj)
+        {
             if (obj != null)
             {
                 _db.Expenses.Update(obj);
